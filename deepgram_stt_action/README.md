@@ -6,7 +6,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/TrueSelph/deepgram_stt_action)
 ![GitHub](https://img.shields.io/github/license/TrueSelph/deepgram_stt_action)
 
-This action facilitates text-to-speech conversion through Deepgram API integration, delivering natural-sounding speech for enhanced audio interactions. As part of the contrib action group, it is configured as a singleton. The package requires Jivas library version 2.0.0 and above.
+This action facilitates speech-to-text conversion through Deepgram API integration, permitting the conversion of spoken audio to the text equivalent for interactions. As part of the contrib action group, it is configured as a singleton. The package requires Jivas library version 2.0.0 and above.
 
 ## Package Information
 

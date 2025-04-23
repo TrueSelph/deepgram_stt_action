@@ -170,14 +170,51 @@ node DeepgramSTTAction :STTAction: {
     }
 
     can healthcheck() -> bool {
+
+        if(not self.api_key){
+            return {
+                "status": False,
+                "message": f"Deepgram API key is not set.",
+                "severity": "error"
+            };
+        }
+        if(not self.model) {
+            return {
+                "status": False,
+                "message": f"Deepgram model is not set.",
+                "severity": "error"
+            };
+        }
+
         try {
-            if(self.model and self.api_key){
+            url = "https://api.deepgram.com/v1/projects";
+            headers = {"Authorization": f"Token {self.api_key}"};
+            response = requests.get(url, headers=headers);
+            if response.status_code == 200 {
+                # Key is valid and operational
                 return True;
+            } else {
+                # Key is invalid or non-operational
+                return {
+                    "status": False,
+                    "message": f"Check Deepgram STT Action configuration: {response.text}",
+                    "severity": "error"
+                };
             }
-            return False;
+
         } except Exception as e {
             self.logger.error(f"An exception occurred in {self.label}:\n{traceback.format_exc()}\n");
-            return False;
+            return {
+                "status": False,
+                "message": f"Check Deepgram STT Action configuration: {e}",
+                "severity": "error"
+            };
         }
+
+        return {
+            "status": False,
+            "message": f"Check Deepgram STT Action configuration.",
+            "severity": "error"
+        };
     }
 }
