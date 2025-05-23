@@ -21,6 +21,11 @@ node DeepgramSTTAction :STTAction: {
         # :param audio_url: URL of the audio file
         # :return: Transcription text
         # """
+
+        if not self.api_key {
+            return None;
+        }
+
         transcript = None;
 
         # Prepare the headers with the API key
@@ -73,6 +78,11 @@ node DeepgramSTTAction :STTAction: {
         # :param audio_type: mimetype of the audio file
         # :return: Transcription text
         # """
+
+        if not self.api_key {
+            return None;
+        }
+
         transcript = None;
 
         # Prepare the headers with the API key
@@ -125,6 +135,11 @@ node DeepgramSTTAction :STTAction: {
         # :param audio_type: mimetype of the audio file
         # :return: Transcription text and duration
         # """
+
+        if not self.api_key {
+            return None;
+        }
+
         transcript = None;
         duration = 0;
 
