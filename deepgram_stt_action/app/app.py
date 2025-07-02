@@ -5,7 +5,7 @@ It utilizes Streamlit to render the UI and interacts with specific widgets for
 header controls, main controls, and update actions.
 """
 
-from jvcli.client.lib.widgets import app_controls, app_header, app_update_action
+from jvclient.lib.widgets import app_controls, app_header, app_update_action
 from streamlit_router import StreamlitRouter
 
 

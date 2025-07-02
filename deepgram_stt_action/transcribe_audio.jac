@@ -1,12 +1,10 @@
-import:jac from jivas.agent.core.agent { Agent }
-import:jac from jivas.agent.action.action { Action }
-import:jac from jivas.agent.action.actions { Actions }
-import:jac from jivas.agent.action.interact_graph_walker { interact_graph_walker }
-import:py os;
-import:py uuid;
-import:py base64;
+import from jivas.agent.core.agent { Agent }
+import from jivas.agent.action.action { Action }
+import from jivas.agent.action.actions { Actions }
+import from jivas.agent.action.interact_graph_walker { interact_graph_walker }
 
-walker transcribe_audio :interact_graph_walker: {
+
+walker transcribe_audio(interact_graph_walker) {
     has files: list[dict] = [];
 
     can on_agent with Agent entry {
