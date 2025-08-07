@@ -1,11 +1,11 @@
-import:py base64;
-import:py logging;
-import:py traceback;
-import:py requests;
-import:py from logging { Logger }
-import:jac from jivas.agent.action.stt_action { STTAction }
+import base64;
+import logging;
+import traceback;
+import requests;
+import from logging { Logger }
+import from jivas.agent.action.stt_action { STTAction }
 
-node DeepgramSTTAction :STTAction: {
+node DeepgramSTTAction(STTAction) {
     # A speech action which integrates with the Deepgram speech to text and text to speech API.
 
     # set up logger
@@ -14,7 +14,7 @@ node DeepgramSTTAction :STTAction: {
     has model: str = 'nova-2'; # enhanced, nova, base
     has smart_format: bool = True;
 
-    can invoke(audio_url: str) {
+    def invoke(audio_url: str) {
         # """
         # Convert an audio file from a URL to text using Deepgram API.
 
@@ -70,7 +70,7 @@ node DeepgramSTTAction :STTAction: {
         return transcript;
     }
 
-    can invoke_base64(audio_base64: str, audio_type: str="audio/mp3") {
+    def invoke_base64(audio_base64: str, audio_type: str="audio/mp3") {
         # """
         # Convert an audio file from a base64 string to text using Deepgram API.
 
@@ -127,7 +127,7 @@ node DeepgramSTTAction :STTAction: {
         return transcript;
     }
 
-    can invoke_file(audio_content: str, audio_type: str="audio/mp3") {
+    def invoke_file(audio_content: str, audio_type: str="audio/mp3") {
         # """
         # Use Deepgram API to transcribe an audio file.
 
@@ -184,7 +184,7 @@ node DeepgramSTTAction :STTAction: {
         return {"transcript": transcript, "duration": duration};
     }
 
-    can healthcheck() -> bool {
+    def healthcheck() -> bool {
 
         if(not self.api_key){
             return {
